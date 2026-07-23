@@ -1,1 +1,115 @@
-<h1>NAAS PORTFOLIO</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naas — Terminal Portfolio</title>
+  <meta name="description" content="Naas — A little bit of everything. Developer, Linux user, privacy advocate.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==================== NAV ==================== -->
+  <nav id="nav">
+    <span class="nav-prompt">naas@portfolio:~$</span>
+    <div class="nav-tabs">
+      <a href="#intro" class="nav-tab active">[intro]</a>
+      <a href="#projects" class="nav-tab">[projects]</a>
+      <a href="#socials" class="nav-tab">[socials]</a>
+      <a href="#blog" class="nav-tab">[blog]</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ==================== INTRO ==================== -->
+    <section id="intro">
+      <h1 class="cmd">$ whoami</h1>
+      <div class="section-content">
+        <p class="name">Naas<span class="cursor">█</span></p>
+        <p class="output">> A security focused backend developer.</p>
+        <p class="output">> Backend Dev. Security Enthusiast. Privacy advocate.</p>
+        <p class="output">> I build things for the web and write about</p>
+        <p class="output">> privacy, technology, and life in general.</p>
+      </div>
+    </section>
+
+    <!-- ==================== PROJECTS ==================== -->
+    <section id="projects">
+      <h2 class="cmd">$ ls ~/projects/</h2>
+      <div class="section-content">
+        <div id="project-list">
+          <p class="output muted">loading...</p>
+        </div>
+        <noscript>
+          <p class="output">// enable JavaScript to view projects</p>
+          <p class="output">// or visit <a href="https://github.com/shortnaas">github.com/shortnaas</a></p>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- ==================== SOCIALS ==================== -->
+    <section id="socials">
+      <h2 class="cmd">$ cat ~/.socials</h2>
+      <div class="section-content">
+        <a href="https://github.com/shortnaas" class="social" target="_blank" rel="noopener">
+          <span class="social-key">github</span>
+          <span class="social-arrow">→</span>
+          <span class="social-val">github.com/shortnaas</span>
+        </a>
+        <a href="https://x.com/shortnaas" class="social" target="_blank" rel="noopener">
+          <span class="social-key">x</span>
+          <span class="social-arrow">→</span>
+          <span class="social-val">x.com/shortnaas</span>
+        </a>
+        <a href="https://linkedin.com/in/shortnaas" class="social" target="_blank" rel="noopener">
+          <span class="social-key">linkedin</span>
+          <span class="social-arrow">→</span>
+          <span class="social-val">linkedin.com/in/shortnaas</span>
+        </a>
+        <span class="social" id="email-link" data-u="jonasget" data-d="proton.me">
+          <span class="social-key">email</span>
+          <span class="social-arrow">→</span>
+          <span class="social-val">[ enable JS to reveal ]</span>
+        </span>
+        <a href="https://t.me/shortnaas" class="social" target="_blank" rel="noopener">
+          <span class="social-key">telegram</span>
+          <span class="social-arrow">→</span>
+          <span class="social-val">t.me/shortnaas</span>
+        </a>
+                <a href="https://youtube.com/@shortnaas" class="social" target="_blank" rel="noopener">
+          <span class="social-key">youtube</span>
+          <span class="social-arrow">→</span>
+          <span class="social-val">youtube.com/@shortnaas</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ==================== BLOG ==================== -->
+    <section id="blog">
+      <h2 class="cmd">$ tail -n 5 ~/blog/posts.log</h2>
+      <div class="section-content">
+        <div id="blog-posts">
+          <!-- Blog posts will be loaded here via JS when RSS/API is ready -->
+         <!-- <p class="output muted">// connect your RSS feed or API to load posts</p> -->
+          <!-- <p class="output muted">// see main.js → loadBlogPosts()</p> -->
+        </div>
+        <p class="read-more">→ <a href="https://www.naas.work/blog" target="_blank" rel="noopener">read all posts at naas.work/blog</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer>
+    <p class="last-updated">last updated: 2026-07-24</p>
+    <span class="footer-prompt">visitor@naas.foo:~$ <span class="cursor">█</span></span>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

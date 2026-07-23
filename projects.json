@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Cambridge Dictionary Parser for Anki",
+    "desc": "A personal fork of Cambridge Dictionary Parser for Anki rebuilt to fit my needs.",
+    "url": "https://ankiweb.net/shared/info/1624807104?cb=1775383814861"
+  },
+  {
+    "name": "Man United PL Countdown",
+    "desc": "A Simple countdown since Man United win their last premier league cup.",
+    "url": "https://man-utd-pl-countdown.vercel.app"
+  },
+  {
+    "name": "WeQuote",
+    "desc": "A telegram bot to send random quotes automatically from ZenQuote API to my telegram channel.",
+    "url": "https://github.com/ShortNaas/wequote"
+  },
+  {
+    "name": "Social Circles",
+    "desc": "A site based on article called 'hundreds' by sivers that track contacts, schedule follow-ups, get birthday reminders & a weekly digest.",
+    "url": "https://social-circles.naas.work/"
+  },
+    {
+    "name": "More Projects",
+    "desc": "If you want to see more projects besides programming.",
+    "url": "https://snaas.work/projects"
+  }
+]
