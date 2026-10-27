@@ -1,6 +1,12 @@
 [
   {
-    "name": "cambridge-anki-parser",
+    "title": "Spidy"
+    "desc": "Privacy-first analytics with striking visualizations."
+    "tech": "Next.js, TypeScript, Tailwind CSS"
+    "repo": "https://github.com/ShortNaas/spidy"
+    "url": "https://spidy-pearl.vercel.app/"
+  },
+  {
     "title": "Cambridge Dictionary Parser for Anki",
     "desc": "A personal fork of Cambridge Dictionary Parser for Anki rebuilt to fit custom vocabulary extraction workflows.",
     "tech": "Python, BeautifulSoup, Anki API",
@@ -8,14 +14,12 @@
     "url": "https://ankiweb.net/shared/info/1624807104?cb=1775383814861"
   },
   {
-    "name": "wequote-bot",
     "title": "WeQuote Telegram Bot",
     "desc": "Automated Telegram bot fetching and publishing curated quotes via ZenQuote REST API to a public channel.",
     "tech": "Python, Telegram API, REST",
     "repo": "https://github.com/ShortNaas/wequote"
   },
   {
-    "name": "social-circles",
     "title": "Social Circles",
     "desc": "Minimalist contact relationship manager inspired by Derek Sivers' 'hundreds' concept for scheduling follow-ups.",
     "tech": "TypeScript, React, Node.js", 
@@ -23,15 +27,6 @@
     "url": "https://social-circles.naas.work/"
   },
   {
-    "name": "man-utd-countdown",
-    "title": "Man United PL Countdown",
-    "desc": "A lightweight live countdown tracker measuring time elapsed since Manchester United won their last Premier League title.",
-    "tech": "HTML5, CSS3",
-    "repo": "https://github.com/shortnaas/man-utd-pl-countdown",
-    "url": "https://man-utd-pl-countdown.vercel.app"
-  },
-  {
-    "name": "more-projects",
     "title": "More Projects",
     "desc": "Additional side projects, experiments, and technical explorations.",
     "tech": "Various",
