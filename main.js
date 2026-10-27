@@ -3,24 +3,28 @@
 
 // Helper to render directory/file tree items (projects & writeups)
 function renderTreeItem(item, isWriteup) {
-  const name = item.title || item.name;
-  const link = item.url || item.repo || item.writeup || '#';
+  const name = item.title || item.name || 'untitled';
+  const url = (item.url && item.url.trim()) ? item.url.trim() : '';
+  const repo = (item.repo && item.repo.trim()) ? item.repo.trim() : '';
+  const writeup = (item.writeup && item.writeup.trim()) ? item.writeup.trim() : '';
+  const link = url || repo || writeup || '';
+
   const perms = isWriteup ? '-rw-r--r--' : 'drwxr-xr-x';
   const nameSuffix = isWriteup ? '' : '/';
 
   const links = [];
-  if (item.writeup) {
-    const isExt = item.writeup.startsWith('http');
-    links.push(`<a href="${item.writeup}" class="tree-link" ${isExt ? 'target="_blank" rel="noopener"' : ''}>[writeup]</a>`);
+  if (writeup) {
+    const isExt = writeup.startsWith('http');
+    links.push(`<a href="${writeup}" class="tree-link" ${isExt ? 'target="_blank" rel="noopener"' : ''}>[writeup]</a>`);
   }
-  if (item.repo) {
-    links.push(`<a href="${item.repo}" class="tree-link" target="_blank" rel="noopener">[repo]</a>`);
+  if (repo) {
+    links.push(`<a href="${repo}" class="tree-link" target="_blank" rel="noopener">[repo]</a>`);
   }
-  if (item.url && item.url !== item.repo && item.url !== item.writeup) {
-    links.push(`<a href="${item.url}" class="tree-link" target="_blank" rel="noopener">[link]</a>`);
+  if (url && url !== repo && url !== writeup) {
+    links.push(`<a href="${url}" class="tree-link" target="_blank" rel="noopener">[link]</a>`);
   }
 
-  const hasTech = Boolean(item.tech);
+  const hasTech = Boolean(item.tech && item.tech.trim());
   const hasLinks = links.length > 0;
 
   const descPrefix = (hasTech || hasLinks) ? '├──' : '└──';
@@ -33,17 +37,18 @@ function renderTreeItem(item, isWriteup) {
     ? `<p class="project-line">└── <span class="meta-label">links:</span> ${links.join(' ')}</p>`
     : '';
 
-  const isExternalName = link.startsWith('http');
-  const targetAttr = isExternalName ? ' target="_blank" rel="noopener"' : '';
+  const nameHtml = link
+    ? `<a href="${link}" class="project-name"${link.startsWith('http') ? ' target="_blank" rel="noopener"' : ''}>${name}${nameSuffix}</a>`
+    : `<span class="project-name">${name}${nameSuffix}</span>`;
 
   return `
     <div class="project-entry">
       <div class="project-header">
         <span class="perms">${perms}</span>
-        <a href="${link}" class="project-name"${targetAttr}>${name}${nameSuffix}</a>
+        ${nameHtml}
         ${item.date ? `<span class="project-date muted">[${item.date}]</span>` : ''}
       </div>
-      <p class="project-line">${descPrefix} ${item.desc}</p>
+      <p class="project-line">${descPrefix} ${item.desc || ''}</p>
       ${techLine}
       ${linksLine}
     </div>
@@ -80,7 +85,8 @@ fetch('projects.json')
       el.innerHTML = projects.map((p) => renderTreeItem(p, false)).join('');
     }
   })
-  .catch(() => {
+  .catch((err) => {
+    console.error('Failed to load projects.json:', err);
     const el = document.getElementById('project-list');
     if (el) {
       el.innerHTML = '<p class="output muted">// failed to load projects</p>';
@@ -96,7 +102,8 @@ fetch('writeup.json')
       el.innerHTML = writeups.map((w) => renderTreeItem(w, true)).join('');
     }
   })
-  .catch(() => {
+  .catch((err) => {
+    console.error('Failed to load writeup.json:', err);
     const el = document.getElementById('writeup-list');
     if (el) {
       el.innerHTML = '<p class="output muted">// failed to load writeups</p>';

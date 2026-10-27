@@ -1,9 +1,9 @@
 [
   {
-    "title": "Spidy"
-    "desc": "Privacy-first analytics with striking visualizations."
-    "tech": "Next.js, TypeScript, Tailwind CSS"
-    "repo": "https://github.com/ShortNaas/spidy"
+    "title": "Spidy",
+    "desc": "Privacy-first analytics with striking visualizations.",
+    "tech": "Next.js, TypeScript, Tailwind CSS",
+    "repo": "https://github.com/ShortNaas/spidy",
     "url": "https://spidy-pearl.vercel.app/"
   },
   {
