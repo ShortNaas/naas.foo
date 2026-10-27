@@ -1,7 +1,56 @@
 // naas.foo — Terminal Portfolio
-// Minimal JS. No dependencies.
+// Minimal JS. Zero dependencies. Fast and immediate.
 
-// 1. Active tab highlighting
+// Helper to render directory/file tree items (projects & writeups)
+function renderTreeItem(item, isWriteup) {
+  const name = item.title || item.name;
+  const link = item.url || item.repo || item.writeup || '#';
+  const perms = isWriteup ? '-rw-r--r--' : 'drwxr-xr-x';
+  const nameSuffix = isWriteup ? '' : '/';
+
+  const links = [];
+  if (item.writeup) {
+    const isExt = item.writeup.startsWith('http');
+    links.push(`<a href="${item.writeup}" class="tree-link" ${isExt ? 'target="_blank" rel="noopener"' : ''}>[writeup]</a>`);
+  }
+  if (item.repo) {
+    links.push(`<a href="${item.repo}" class="tree-link" target="_blank" rel="noopener">[repo]</a>`);
+  }
+  if (item.url && item.url !== item.repo && item.url !== item.writeup) {
+    links.push(`<a href="${item.url}" class="tree-link" target="_blank" rel="noopener">[link]</a>`);
+  }
+
+  const hasTech = Boolean(item.tech);
+  const hasLinks = links.length > 0;
+
+  const descPrefix = (hasTech || hasLinks) ? '├──' : '└──';
+  const techPrefix = hasLinks ? '├──' : '└──';
+
+  const techLine = hasTech
+    ? `<p class="project-line">${techPrefix} <span class="meta-label">tech:</span> ${item.tech}</p>`
+    : '';
+  const linksLine = hasLinks
+    ? `<p class="project-line">└── <span class="meta-label">links:</span> ${links.join(' ')}</p>`
+    : '';
+
+  const isExternalName = link.startsWith('http');
+  const targetAttr = isExternalName ? ' target="_blank" rel="noopener"' : '';
+
+  return `
+    <div class="project-entry">
+      <div class="project-header">
+        <span class="perms">${perms}</span>
+        <a href="${link}" class="project-name"${targetAttr}>${name}${nameSuffix}</a>
+        ${item.date ? `<span class="project-date muted">[${item.date}]</span>` : ''}
+      </div>
+      <p class="project-line">${descPrefix} ${item.desc}</p>
+      ${techLine}
+      ${linksLine}
+    </div>
+  `;
+}
+
+// 1. Active tab highlighting on scroll
 (() => {
   const sections = document.querySelectorAll('main > section[id]');
   const tabs = document.querySelectorAll('.nav-tab');
@@ -12,12 +61,12 @@
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           tabs.forEach((t) => t.classList.remove('active'));
-          document.querySelector(`.nav-tab[href="#${entry.target.id}"]`)
-            ?.classList.add('active');
+          const activeTab = document.querySelector(`.nav-tab[href="#${entry.target.id}"]`);
+          if (activeTab) activeTab.classList.add('active');
         }
       });
     },
-    { rootMargin: '-40% 0px -55% 0px' }
+    { rootMargin: '-30% 0px -55% 0px' }
   );
   sections.forEach((s) => observer.observe(s));
 })();
@@ -26,54 +75,44 @@
 fetch('projects.json')
   .then((r) => r.json())
   .then((projects) => {
-    document.getElementById('project-list').innerHTML = projects
-      .map(
-        (p) =>
-          `<div class="project">
-        <div class="project-header">
-          <span class="perms">drwxr-xr-x</span>
-          <a href="${p.url}" class="project-name" target="_blank" rel="noopener">${p.name}/</a>
-        </div>
-        <p class="project-desc">└── ${p.desc}</p>
-      </div>`
-      )
-      .join('');
+    const el = document.getElementById('project-list');
+    if (el) {
+      el.innerHTML = projects.map((p) => renderTreeItem(p, false)).join('');
+    }
   })
   .catch(() => {
-    document.getElementById('project-list').innerHTML =
-      '<p class="output muted">// failed to load projects</p>';
+    const el = document.getElementById('project-list');
+    if (el) {
+      el.innerHTML = '<p class="output muted">// failed to load projects</p>';
+    }
   });
 
-// 3. Reveal obfuscated email (bots can't scrape data attributes)
-(() => {
-  const el = document.getElementById('email-link');
-  if (!el) return;
-  const u = el.dataset.u, d = el.dataset.d;
-  const addr = u + '@' + d;
-  const a = document.createElement('a');
-  a.href = 'mailto:' + addr;
-  a.className = 'social';
-  a.innerHTML = el.innerHTML;
-  a.querySelector('.social-val').textContent = addr;
-  el.replaceWith(a);
-})();
+// 3. Load writeups from writeup.json
+fetch('writeup.json')
+  .then((r) => r.json())
+  .then((writeups) => {
+    const el = document.getElementById('writeup-list');
+    if (el) {
+      el.innerHTML = writeups.map((w) => renderTreeItem(w, true)).join('');
+    }
+  })
+  .catch(() => {
+    const el = document.getElementById('writeup-list');
+    if (el) {
+      el.innerHTML = '<p class="output muted">// failed to load writeups</p>';
+    }
+  });
 
-// 4. Blog post loader — STUB for future RSS/API
-// Uncomment and configure when your feed is ready:
-//
-// fetch('https://www.naas.work/rss.xml')
-//   .then((r) => r.text())
-//   .then((text) => {
-//     const xml = new DOMParser().parseFromString(text, 'text/xml');
-//     document.getElementById('blog-posts').innerHTML =
-//       [...xml.querySelectorAll('item')].slice(0, 5)
-//         .map((item) => {
-//           const title = item.querySelector('title')?.textContent ?? '';
-//           const link = item.querySelector('link')?.textContent ?? '#';
-//           const date = item.querySelector('pubDate')?.textContent ?? '';
-//           const iso = date ? new Date(date).toISOString().split('T')[0] : '';
-//           return `<a href="${link}" class="blog-entry" target="_blank" rel="noopener">
-//             <time>[${iso}]</time> ${title}</a>`;
-//         }).join('');
-//   })
-//   .catch((err) => console.warn('Blog feed unavailable:', err));
+// 4. Protect email & setup mailto links
+(() => {
+  document.querySelectorAll('[data-u][data-d]').forEach((el) => {
+    const u = el.dataset.u;
+    const d = el.dataset.d;
+    const addr = `${u}@${d}`;
+    el.setAttribute('href', `mailto:${addr}?subject=hello`);
+    const val = el.querySelector('.social-val');
+    if (val && (val.textContent.includes('enable JS') || !val.textContent.trim())) {
+      val.textContent = addr;
+    }
+  });
+})();

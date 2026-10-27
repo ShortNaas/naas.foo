@@ -4,9 +4,9 @@ Terminal-themed personal portfolio.
 
 ## Stack
 
-- Pure HTML + CSS + ~30 lines vanilla JS
-- No frameworks, no build tools, no dependencies
-- JetBrains Mono font via Google Fonts
+- Pure HTML + CSS + minimal vanilla JS
+- No frameworks, no build tools, no runtime dependencies
+- JetBrains Mono & Fira Code fonts via Google Fonts
 
 ## Run locally
 
@@ -16,7 +16,7 @@ Open `index.html` in a browser, or serve it:
 python3 -m http.server 8000
 ```
 
-> **Note**: Projects load via `fetch()`, so a local server is needed (not `file://`).
+> **Note**: Projects and writeups load via `fetch()`, so a local server is needed (not `file://`).
 
 ## Customize
 
@@ -26,25 +26,42 @@ Edit `projects.json` — no HTML editing needed:
 
 ```json
 {
-  "name": "my-project",
-  "desc": "A short description.",
-  "url": "https://github.com/shortnaas/my-project"
+  "name": "wazuh-siem-lab",
+  "title": "Wazuh SIEM Detection & Active Response Lab",
+  "desc": "Deployed Wazuh SIEM & Suricata in Proxmox to detect SSH brute-force attacks and trigger automated firewall mitigation.",
+  "tech": "Wazuh, Suricata, Proxmox VE, Ubuntu, Python, Bash",
+  "repo": "https://github.com/shortnaas/wazuh-soc-lab",
+  "writeup": "#writeups"
 }
 ```
 
-### Bio
+### Writeups
 
-Edit the intro text in `index.html` → `<section id="intro">`.
+Edit `writeup.json` — no HTML editing needed:
 
-### Socials
+```json
+{
+  "name": "building-wazuh-siem-lab",
+  "title": "Building a Wazuh SIEM & Active Response Lab in Proxmox",
+  "desc": "Step-by-step walkthrough of deploying a Wazuh manager and active response rules.",
+  "tech": "Wazuh, Suricata, Proxmox VE, Ubuntu, Bash",
+  "date": "2026-10",
+  "url": "https://github.com/shortnaas/wazuh-soc-lab#readme"
+}
+```
 
-Update links and handles in `index.html` → `<section id="socials">`.
+### Bio, Status, Resume, & Skills
 
-The email is obfuscated via `data-u` / `data-d` attributes to prevent bot scraping. To change it, update the `data-u` (username) and `data-d` (domain) values on the `#email-link` element.
+Edit the details in `index.html`:
+- Status: `<p class="status-line">`
+- Resume: `resume.pdf` in project root
+- About: `<section id="about">`
+- Skills: `<section id="skills">`
+- Certs: `<section id="certs">`
 
-### Blog
+### Contact & Socials
 
-Connect your RSS or API feed by uncommenting the stub in `main.js`.
+Update links and handles in `index.html` → `<section id="contact">`.
 
 ### Colors
 

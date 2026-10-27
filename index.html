@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Naas — Terminal Portfolio</title>
-  <meta name="description" content="Naas — A little bit of everything. Developer, Linux user, privacy advocate.">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>Naas — Cyber Security & Backend Portfolio</title>
+  <meta name="description" content="Naas — Security-focused backend developer & IT security analyst. ISC2 CC, CompTIA Security+. Open to remote SOC, IT security, and junior backend roles.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,24 +18,103 @@
   <nav id="nav">
     <span class="nav-prompt">naas@portfolio:~$</span>
     <div class="nav-tabs">
-      <a href="#intro" class="nav-tab active">[intro]</a>
+      <a href="#about" class="nav-tab active">[about]</a>
+      <a href="#skills" class="nav-tab">[skills]</a>
+      <a href="#certs" class="nav-tab">[certs]</a>
       <a href="#projects" class="nav-tab">[projects]</a>
-      <a href="#socials" class="nav-tab">[socials]</a>
-      <a href="#blog" class="nav-tab">[blog]</a>
+      <a href="#writeups" class="nav-tab">[writeups]</a>
+      <a href="#contact" class="nav-tab">[contact]</a>
     </div>
   </nav>
 
   <main>
 
-    <!-- ==================== INTRO ==================== -->
-    <section id="intro">
+    <!-- ==================== ABOUT & INTRO ==================== -->
+    <section id="about">
       <h1 class="cmd">$ whoami</h1>
       <div class="section-content">
         <p class="name">Naas<span class="cursor">█</span></p>
         <p class="output">> A security focused backend developer.</p>
-        <p class="output">> Backend. Security. Privacy.</p>
-        <p class="output">> I build things for the web and write about</p>
-        <p class="output">> privacy, technology, and life in general.</p>
+      </div>
+
+      <!-- Status Line -->
+      <div class="cmd-block">
+        <h2 class="cmd sub-cmd">$ cat ~/status</h2>
+        <div class="section-content">
+          <p class="output status-line">“Open to remote SOC / IT security / junior backend roles.”</p>
+        </div>
+      </div>
+
+      <!-- Resume Download -->
+      <div class="cmd-block">
+        <h2 class="cmd sub-cmd">$ cat ~/resume.pdf</h2>
+        <div class="section-content">
+          <p class="output">
+            <a href="resume.pdf" class="resume-download" download="Naas_Resume.pdf" target="_blank" rel="noopener">
+              <span class="file-icon">[↓]</span>
+              <span class="file-name">resume.pdf</span>
+              <span class="resume-badge">[Download Cyber Resume]</span>
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <!-- About Details -->
+      <div class="cmd-block">
+        <h2 class="cmd sub-cmd">$ cat ~/about</h2>
+        <div class="section-content">
+          <p class="output">> Hands-on security analyst and backend developer passionate about defensive security, Linux systems, and API design.</p>
+          <p class="output">> Experience configuring SIEM detection rules, bastion hosts, and virtualization labs, combined with solid Python and Go fundamentals.</p>
+          <p class="output">> Actively targeting remote SOC Analyst (Tier 1/2), IT Security, or Junior Backend roles.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SKILLS ==================== -->
+    <section id="skills">
+      <h2 class="cmd">$ cat ~/skills</h2>
+      <div class="section-content">
+        <div class="skills-grid">
+          <div class="skill-row">
+            <span class="skill-category">[security]</span>
+            <span class="skill-sep">:</span>
+            <span class="skill-items">Wazuh SIEM, Suricata IDS/IPS, Wireshark, Nmap, UFW/iptables, Fail2ban, Log Analysis, Threat Detection</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-category">[dev]</span>
+            <span class="skill-sep">:</span>
+            <span class="skill-items">Python, Go, Bash Scripting, REST APIs, PostgreSQL, SQLite, Git</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-category">[devops]</span>
+            <span class="skill-sep">:</span>
+            <span class="skill-items">Proxmox VE, Linux (Debian, Ubuntu), Docker, WireGuard VPN, Reverse Proxies (Caddy/Nginx), System Hardening</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CERTS ==================== -->
+    <section id="certs">
+      <h2 class="cmd">$ ls ~/certs/</h2>
+      <div class="section-content">
+        <div class="certs-list">
+          <div class="cert-item">
+            <span class="perms">-rw-r--r--</span>
+            <span class="cert-name">ISC2 Certified in Cybersecurity (CC)</span>
+            <span class="cert-tag tag-active">[certified]</span>
+          </div>
+          <div class="cert-item">
+            <span class="perms">-rw-r--r--</span>
+            <span class="cert-name">CompTIA Security+</span>
+            <span class="cert-tag tag-active">[certified]</span>
+          </div>
+          <div class="cert-item">
+            <span class="perms">-rw-r--r--</span>
+            <span class="cert-name">Boot.dev DevOps & Backend</span>
+            <span class="cert-tag tag-progress">[in progress]</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -43,62 +123,82 @@
       <h2 class="cmd">$ ls ~/projects/</h2>
       <div class="section-content">
         <div id="project-list">
-          <p class="output muted">loading...</p>
+          <p class="output muted">loading projects...</p>
         </div>
         <noscript>
-          <p class="output">// enable JavaScript to view projects</p>
-          <p class="output">// or visit <a href="https://github.com/shortnaas">github.com/shortnaas</a></p>
+          <div class="project-entry">
+            <div class="project-header">
+              <span class="perms">drwxr-xr-x</span>
+              <a href="https://github.com/shortnaas/wazuh-soc-lab" class="project-name" target="_blank" rel="noopener">Wazuh SIEM Detection & Active Response Lab/</a>
+            </div>
+            <p class="project-line">├── Deployed Wazuh SIEM & Suricata in Proxmox to detect SSH brute-force attacks and trigger automated firewall mitigation.</p>
+            <p class="project-line">├── <span class="meta-label">tech:</span> Wazuh, Suricata, Proxmox VE, Ubuntu, Python, Bash</p>
+            <p class="project-line">└── <span class="meta-label">links:</span> <a href="#writeups" class="tree-link">[writeup]</a> <a href="https://github.com/shortnaas/wazuh-soc-lab" class="tree-link" target="_blank" rel="noopener">[repo]</a></p>
+          </div>
+          <div class="project-entry">
+            <div class="project-header">
+              <span class="perms">drwxr-xr-x</span>
+              <a href="https://github.com/shortnaas/homelab-infra" class="project-name" target="_blank" rel="noopener">Proxmox Virtualized Network & Bastion Lab/</a>
+            </div>
+            <p class="project-line">├── Designed a segmented VLAN architecture with isolated subnets, WireGuard VPN tunnels, and key-only bastion jump hosts.</p>
+            <p class="project-line">├── <span class="meta-label">tech:</span> Proxmox VE, Debian, WireGuard, UFW, OPNsense</p>
+            <p class="project-line">└── <span class="meta-label">links:</span> <a href="#writeups" class="tree-link">[writeup]</a> <a href="https://github.com/shortnaas/homelab-infra" class="tree-link" target="_blank" rel="noopener">[repo]</a></p>
+          </div>
+          <p class="output muted">// enable JavaScript to view full project list</p>
         </noscript>
       </div>
     </section>
 
-    <!-- ==================== SOCIALS ==================== -->
-    <section id="socials">
-      <h2 class="cmd">$ cat ~/.socials</h2>
+    <!-- ==================== WRITEUPS ==================== -->
+    <section id="writeups">
+      <h2 class="cmd">$ ls ~/writeups/</h2>
       <div class="section-content">
-        <a href="https://github.com/shortnaas" class="social" target="_blank" rel="noopener">
-          <span class="social-key">github</span>
-          <span class="social-arrow">→</span>
-          <span class="social-val">github.com/shortnaas</span>
-        </a>
-        <a href="https://x.com/shortnaas" class="social" target="_blank" rel="noopener">
-          <span class="social-key">x</span>
-          <span class="social-arrow">→</span>
-          <span class="social-val">x.com/shortnaas</span>
-        </a>
-        <a href="https://linkedin.com/in/shortnaas" class="social" target="_blank" rel="noopener">
-          <span class="social-key">linkedin</span>
-          <span class="social-arrow">→</span>
-          <span class="social-val">linkedin.com/in/shortnaas</span>
-        </a>
-        <span class="social" id="email-link" data-u="yo" data-d="naas.work">
-          <span class="social-key">email</span>
-          <span class="social-arrow">→</span>
-          <span class="social-val">[ enable JS to reveal ]</span>
-        </span>
-        <!--<a href="https://t.me/shortnaas" class="social" target="_blank" rel="noopener">
-          <span class="social-key">telegram</span>
-          <span class="social-arrow">→</span>
-          <span class="social-val">t.me/shortnaas</span>
-        </a>-->
-        <!--<a href="https://youtube.com/@shortnaas" class="social" target="_blank" rel="noopener">
-          <span class="social-key">youtube</span>
-          <span class="social-arrow">→</span>
-          <span class="social-val">youtube.com/@shortnaas</span>
-        </a>-->
+        <div id="writeup-list">
+          <p class="output muted">loading writeups...</p>
+        </div>
+        <noscript>
+          <div class="project-entry">
+            <div class="project-header">
+              <span class="perms">-rw-r--r--</span>
+              <a href="https://github.com/shortnaas/wazuh-soc-lab#readme" class="project-name" target="_blank" rel="noopener">Building a Wazuh SIEM & Active Response Lab in Proxmox</a>
+              <span class="project-date muted">[2026-10]</span>
+            </div>
+            <p class="project-line">├── Walkthrough of deploying a Wazuh manager, configuring agent telemetry across VLANs, and authoring custom active response rules.</p>
+            <p class="project-line">├── <span class="meta-label">tech:</span> Wazuh, Suricata, Proxmox VE, Ubuntu, Bash</p>
+            <p class="project-line">└── <span class="meta-label">links:</span> <a href="https://github.com/shortnaas/wazuh-soc-lab#readme" class="tree-link" target="_blank" rel="noopener">[writeup]</a> <a href="https://github.com/shortnaas/wazuh-soc-lab" class="tree-link" target="_blank" rel="noopener">[repo]</a></p>
+          </div>
+          <p class="output muted">// enable JavaScript to view full writeups list</p>
+        </noscript>
       </div>
     </section>
 
-    <!-- ==================== BLOG ==================== -->
-    <section id="blog">
-      <h2 class="cmd">$ tail -n 5 ~/blog/posts.log</h2>
+    <!-- ==================== CONTACT ==================== -->
+    <section id="contact">
+      <h2 class="cmd">$ mail -s "hello" <a href="mailto:yo@naas.work?subject=hello" class="mail-cmd-link" id="cmd-email" data-u="yo" data-d="naas.work">yo@naas.work</a></h2>
       <div class="section-content">
-        <div id="blog-posts">
-          <!-- Blog posts will be loaded here via JS when RSS/API is ready -->
-         <!-- <p class="output muted">// connect your RSS feed or API to load posts</p> -->
-          <!-- <p class="output muted">// see main.js → loadBlogPosts()</p> -->
+        <p class="output">> Reach out for SOC / security roles, collaboration, or questions.</p>
+        <div class="socials-list">
+          <a href="https://github.com/shortnaas" class="social" target="_blank" rel="noopener">
+            <span class="social-key">github</span>
+            <span class="social-arrow">→</span>
+            <span class="social-val">github.com/shortnaas</span>
+          </a>
+          <a href="https://linkedin.com/in/shortnaas" class="social" target="_blank" rel="noopener">
+            <span class="social-key">linkedin</span>
+            <span class="social-arrow">→</span>
+            <span class="social-val">linkedin.com/in/shortnaas</span>
+          </a>
+          <a href="https://x.com/shortnaas" class="social" target="_blank" rel="noopener">
+            <span class="social-key">x</span>
+            <span class="social-arrow">→</span>
+            <span class="social-val">x.com/shortnaas</span>
+          </a>
+          <a href="mailto:yo@naas.work?subject=hello" class="social" id="email-link" data-u="yo" data-d="naas.work">
+            <span class="social-key">email</span>
+            <span class="social-arrow">→</span>
+            <span class="social-val">yo@naas.work</span>
+          </a>
         </div>
-        <p class="read-more">→ <a href="https://www.naas.work/blog" target="_blank" rel="noopener">read all posts at naas.work/blog</a></p>
       </div>
     </section>
 

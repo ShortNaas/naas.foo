@@ -27,8 +27,8 @@ An uncompromisingly lightweight, privacy-respecting personal presence. Unlike ge
 
 ## Capabilities and Constraints
 
-- **Capabilities:** Terminal-themed single-page layout; section navigation with scroll observation; dynamic client-side project rendering via `projects.json`; bot-resistant obfuscated email reveal; extensible blog feed integration stub.
-- **Constraints:** Pure vanilla HTML, CSS, and minimal vanilla JavaScript (~30 lines). No frontend frameworks, no bundlers, no external dependencies.
+- **Capabilities:** Terminal-themed single-page layout; section navigation with scroll observation; dynamic client-side project and writeup rendering via `projects.json` and `writeup.json`; cyber resume download; bot-resistant and accessible contact credentials.
+- **Constraints:** Pure vanilla HTML, CSS, and minimal vanilla JavaScript (< 90 lines). No frontend frameworks, no bundlers, no external runtime dependencies.
 - **Privacy & Security:** Zero third-party trackers, zero cookies, zero analytics. Protected contact credentials.
 
 ## Brand Commitments
@@ -41,7 +41,7 @@ An uncompromisingly lightweight, privacy-respecting personal presence. Unlike ge
 
 - Live projects recorded in `projects.json`: Cambridge Dictionary Parser for Anki, Man United PL Countdown, WeQuote (ZenQuote Telegram bot), Social Circles (contact manager based on Derek Sivers' 'hundreds').
 - Code repository at `https://github.com/shortnaas`.
-- External blog and essays at `https://www.naas.work/blog`.
+- Technical writeups in `writeup.json` covering SIEM deployment, network segmentation, and system hardening.
 - *Absences:* No corporate testimonials, client logos, commercial case studies, or pricing claims exist; future work must not fabricate them.
 
 ## Product Principles
